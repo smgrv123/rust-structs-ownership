@@ -1,8 +1,8 @@
 use std::io;
 
 struct Rectangle{
-    length: String,
-    width: String
+    length: u32,
+    width: u32
 }
 
 fn main() {
@@ -23,11 +23,21 @@ fn main() {
     let length: i32 = dim_rect.0.trim().parse().expect("Please type a number");
     let width: i32 = dim_rect.1.trim().parse().expect("Please type a number");
 
-    let area = area((length,width));
+    let area = area_tuple((length,width));
 
-    println!("The area of the rectangle is {area}")
+    println!("The area of the rectangle is {area} using a tuple");
+
+    let rect_dim = Rectangle{
+        length:50,
+        width:50
+    };
+    println!("The area of the rectangle using Struct is {}", area_struct(&rect_dim))
 }
 
-fn area(dim: (i32,i32)) -> i32 {
+fn area_tuple(dim: (i32,i32)) -> i32 {
     dim.0 * dim.1
+}
+
+fn area_struct(dim: &Rectangle) -> u32 {
+    dim.length * dim.width
 }
