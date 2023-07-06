@@ -5,6 +5,12 @@ struct Rectangle{
     width: u32
 }
 
+impl Rectangle{
+    fn perimeter(&self)->u32{
+        2*(self.length+self.width)
+    }
+}
+
 fn main() {
     let mut dim_rect:(String, String)=("".to_owned(),"".to_owned());
 
@@ -31,7 +37,8 @@ fn main() {
         length:50,
         width:50
     };
-    println!("The area of the rectangle using Struct is {}", area_struct(&rect_dim))
+    println!("The area of the rectangle using Struct is {}", area_struct(&rect_dim));
+    println!("The perimeter of the rectangle using Struct is {}", rect_dim.perimeter())
 }
 
 fn area_tuple(dim: (i32,i32)) -> i32 {
